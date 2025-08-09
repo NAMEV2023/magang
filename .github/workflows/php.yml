@@ -1,39 +1,40 @@
-name: PHP Composer
+name: Deploy Laravel to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+      - name: Install NPM dependencies
+        run: npm install
 
-    # - name: Run test suite
-    #   run: composer run-script test
+      - name: Build assets
+        run: npm run build
+
+      - name: Export static files
+        run: php artisan export
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
