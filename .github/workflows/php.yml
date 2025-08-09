@@ -1,4 +1,4 @@
-name: Deploy Laravel to GitHub Pages
+name: Build Laravel Blade for GitHub Pages
 
 on:
   push:
@@ -9,7 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -20,18 +21,20 @@ jobs:
         run: composer install --no-dev --optimize-autoloader
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: Install NPM dependencies
-        run: npm install
+      - name: Install NPM dependencies & build assets
+        run: |
+          npm install
+          npm run build
 
-      - name: Build assets
-        run: npm run build
-
-      - name: Export static files
-        run: php artisan export
+      - name: Generate static HTML from Blade
+        run: |
+          php artisan view:cache
+          mkdir dist
+          php artisan export:views dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
