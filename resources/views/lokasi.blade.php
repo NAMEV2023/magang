@@ -1,0 +1,185 @@
+        <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resto Joss Gandos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#E43636',
+                        'secondary': '#F6EFD2', 
+                        'accent': '#E2DDB4',
+                        'dark': '#000000'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation -->
+    <nav class="bg-dark shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-primary">Resto Joss Gandos</h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" onclick="showPage('home')" class="nav-link text-secondary hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300">Home</a>
+                        <a href="#about" onclick="showPage('about')" class="nav-link text-secondary hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300">About</a>
+                        <a href="#menu" onclick="showPage('menu')" class="nav-link text-secondary hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300">Menu</a>
+                        <a href="#gallery" onclick="showPage('gallery')" class="nav-link text-secondary hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300">Gallery</a>
+                        <a href="#lokasi" onclick="showPage('lokasi')" class="nav-link text-secondary hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300">Lokasi</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-dark">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" onclick="showPage('home')" class="nav-link block text-secondary hover:text-primary px-3 py-2 text-base font-medium">Home</a>
+                <a href="#about" onclick="showPage('about')" class="nav-link block text-secondary hover:text-primary px-3 py-2 text-base font-medium">About</a>
+                <a href="#menu" onclick="showPage('menu')" class="nav-link block text-secondary hover:text-primary px-3 py-2 text-base font-medium">Menu</a>
+                <a href="#gallery" onclick="showPage('gallery')" class="nav-link block text-secondary hover:text-primary px-3 py-2 text-base font-medium">Gallery</a>
+                <a href="#lokasi" onclick="showPage('lokasi')" class="nav-link block text-secondary hover:text-primary px-3 py-2 text-base font-medium">Lokasi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16 min-h-screen">
+    <!-- LOKASI PAGE -->
+    <div id="lokasi-page" class="page-content">
+            <section class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-dark text-center mb-12">Lokasi Outlet</h2>
+
+    <!-- Carousel Image -->
+    <div class="relative overflow-hidden rounded-lg shadow-lg mb-10">
+      <img src="img/outlet.jpg" alt="Outlet Image" class="w-full h-auto object-cover rounded-lg">
+
+      <!-- Dots -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        <span class="w-2 h-2 rounded-full bg-gray-500 opacity-60"></span>
+        <span class="w-2 h-2 rounded-full bg-gray-500 opacity-60"></span>
+        <span class="w-2 h-2 rounded-full bg-gray-500 opacity-60"></span>
+        <span class="w-2 h-2 rounded-full bg-dark opacity-100"></span>
+        <span class="w-2 h-2 rounded-full bg-gray-500 opacity-60"></span>
+      </div>
+
+      <!-- Arrows -->
+      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-dark px-3 py-2 rounded-full shadow hover:bg-gray-100">&#8249;</button>
+      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-dark px-3 py-2 rounded-full shadow hover:bg-gray-100">&#8250;</button>
+    </div>
+
+    <!-- Outlet List -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="text-center">
+        <h3 class="text-xl font-bold text-dark">Resto Joss Gandos</h3>
+        <p class="text-gray-600">Jl. Raya Jemursari No. 15</p>
+      </div>
+      <div class="text-center">
+        <h3 class="text-xl font-bold text-dark">Resto Joss Gandos - Ketintang</h3>
+        <p class="text-gray-600">Jl. Jetis Seraten, Ketintang</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- Google Maps Embeds for 2 Outlets -->
+    <div class="grid md:grid-cols-2 gap-28">
+      <!-- Lokasi Outlet 1 -->
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.2445784108723!2d112.00490517503593!3d-7.439644473191569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e784b1647fc1d9f%3A0x963cf83e17753ae1!2sResto%20Joss%20Gandos!5e0!3m2!1sen!2sid!4v1691401969236!5m2!1sen!2sid"
+          width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- Lokasi Outlet 2 -->
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.452398497726!2d112.71762607503562!3d-7.415637073129148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb6a9de6b271%3A0x6a17a5c3bcb6409!2sResto%20Joss%20Gandos%20-%20Ketintang!5e0!3m2!1sen!2sid!4v1691402025674!5m2!1sen!2sid"
+          width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Resto Joss Gandos</h3>
+                    <p class="text-gray-300 mb-4">Menghadirkan cita rasa terbaik dengan pelayanan terdepan untuk keluarga Indonesia.</p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Menu Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" onclick="showPage('home')" class="text-gray-300 hover:text-primary transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" onclick="showPage('about')" class="text-gray-300 hover:text-primary transition-colors duration-300">Tentang Kami</a></li>
+                        <li><a href="#menu" onclick="showPage('menu')" class="text-gray-300 hover:text-primary transition-colors duration-300">Menu</a></li>
+                        <li><a href="#gallery" onclick="showPage('gallery')" class="text-gray-300 hover:text-primary transition-colors duration-300">Galeri</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-semibold mb-4">Kontak</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Jl. Raya Jemursari No.15, Kec. Wonocolo, Surabaya, Jawa Timur</p>
+                        <p><i class="fas fa-phone mr-2"></i>+62 319-984-2999</p>
+                        <p><i class="fas fa-envelope mr-2"></i>info@restojossgandos.com</p>
+                    </div>
+                </div>
+
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="font-semibold mb-4">Jam Buka</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>Senin - Minggu<br><span class="text-primary">10.00 - 22.00</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 Resto Joss Gandos. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>
